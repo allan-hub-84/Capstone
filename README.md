@@ -1,4 +1,4 @@
-# Capstone Project: Predict Home Price Index Based on Major Crime Incident in Toronto
+﻿# Capstone Project: Predict Home Price Index Based on Major Crime Incident in Toronto
 
 ## Overview:
 
@@ -10,6 +10,7 @@ Purchasing a property is one of the most significant investments a person can ma
 
 MLS® Home Price Index Archive: https://trreb.ca/market-data/mls-home-price-index/mls-home-price-index-archive/
 
+ColumnDescriptionData TypeToronto MunicipalityToronto Real Estate Board Municipality CodeobjectHPI - Single-Family DetachedHome Price Index for Detached Propertyint64HPI - Single-Family AttachedHome Price Index for Semi-Detached Propertyint64HPI - TownhouseHome Price Index for Townhouse Propertyfloat64HPI - ApartmentHome Price Index for Apartment Propertyint64Effective DateDate of the HPIdatetime64[ns]
 
 Toronto Police Services Major Crime Indicators Open Data: https://data.torontopolice.on.ca/datasets/TorontoPS::major-crime-indicators-open-data/about
 
