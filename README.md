@@ -1,21 +1,49 @@
 ﻿# Capstone Project: Predict Home Price Index Based on Major Crime Incident in Toronto
+ <b>Author:</b> Allan Salamanca
+ 
+ <b>Date:</b> February 23, 2025
 
 ## Overview:
 
-Affordable housing has been a hot debate in Canada in the last 10 years.  Housing prices have increased year over year, and affordability is a challenge country-wide.  Toronto, Ontario, which is Canada’s most populated city, is the second most expensive city to live in Canada.  The Home Price Index for Toronto has increased 8% year over year, with property values ending at $1.6M for detached, $1.2M for semi-detached, $870K for townhouses and $690K for apartments by the end of 2024.
+Affordable housing has been a hot debate in Canada in the last 10 years.  Housing prices have increased year over year, and affordability is a challenge country-wide.  Toronto, Ontario, which is Canada’s most populated city, is the second most expensive city to live in Canada.  The Home Price Index for Toronto has increased 8% year over year, with property values ending at $1.6M for detached, $1.2M for semi-detached, $870K for townhouses and $690K for apartments by the end of 2024.  Additionally, with Toronto's rising population, major crime incidents also have increased year over year by 4%.
 
-Purchasing a property is one of the most significant investments a person can make, and these investments are assets that are dependent upon for investments for retirement or to generate generational wealth.  It’s then crucial to understand what factors can affect housing prices to maximize equity and return on investment.  With this tool, we aim to predict the housing price impact by neighbourhood based on the estimated crime rate incidents.
+Purchasing a property is one of the most significant investments a person can make, and these investments are assets dependent upon investments for retirement or generating generational wealth.  Understanding what factors affect housing prices is crucial to maximizing equity and return on investment.  With this tool, we aim to predict the housing price impact by neighbourhood based on the estimated crime rate incidents.
 
-## Data:
+## Objective:
+Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse, or Apartment) and neighbourhood based on major crime incident occurrences.
 
-MLS® Home Price Index Archive: https://trreb.ca/market-data/mls-home-price-index/mls-home-price-index-archive/
+## Data Sets:
 
-ColumnDescriptionData TypeToronto MunicipalityToronto Real Estate Board Municipality CodeobjectHPI - Single-Family DetachedHome Price Index for Detached Propertyint64HPI - Single-Family AttachedHome Price Index for Semi-Detached Propertyint64HPI - TownhouseHome Price Index for Townhouse Propertyfloat64HPI - ApartmentHome Price Index for Apartment Propertyint64Effective DateDate of the HPIdatetime64[ns]
+### 1) MLS® Home Price Index Archive: https://trreb.ca/market-data/mls-home-price-index/mls-home-price-index-archive/
 
-Toronto Police Services Major Crime Indicators Open Data: https://data.torontopolice.on.ca/datasets/TorontoPS::major-crime-indicators-open-data/about
+| Column                          | Description                                      | Data Type     |
+|---------------------------------|--------------------------------------------------|--------------|
+| Toronto Municipality            | Toronto Real Estate Board Municipality Code     | object       |
+| HPI - Single-Family Detached    | Home Price Index for Detached Property          | int64        |
+| HPI - Single-Family Attached    | Home Price Index for Semi-Detached Property     | int64        |
+| HPI - Townhouse                 | Home Price Index for Townhouse Property         | float64      |
+| HPI - Apartment                 | Home Price Index for Apartment Property         | int64        |
+| Effective Date                  | Date of the HPI                                 | datetime64[ns] |
 
-Toronto Neighbourhood Index: https://app.trreb.ca/trrebdata/common/maps/Toronto.pdf
+### 2) Toronto Police Services Major Crime Indicators Open Data: https://data.torontopolice.on.ca/datasets/TorontoPS::major-crime-indicators-open-data/about
 
+| Column                          | Description                                      | Data Type     |
+|---------------------------------|--------------------------------------------------|--------------|
+| EVENT_UNIQUE_ID                 | Offence Number                                   | object       |
+| OCC_DATE                        | Date Offence Occurred                            | datetime64[ns] |
+| DIVISION                        | Police Division where Offence Occurred           | object |
+| PREMISES_TYPE                   | Premises Type of where Offence Occured           | object |
+| OFFENCE                         | Type of Offence                                  | object |
+| MCI_CATEGORY                    | Major Crime Incident Category                    | object  |
+| NEIGHBOURHOOD_140               | Neighbourhood Name                               | object  |
+
+### 3) Toronto Neighbourhood Index: https://app.trreb.ca/trrebdata/common/maps/Toronto.pdf
+
+| Column                          | Description                                      | Data Type    |
+|---------------------------------|--------------------------------------------------|--------------|
+| Toronto Police Neighbourhood Categories              | Neighbourhood Name by Toronto Police Service Data                                  | object       |
+| MLS Neighbourhood Categories                   | Neighbourhood Name by MLS Data                    | object       |
+| MLS Municipality Code               | Municipality Code by Toronto Real Estate Board                               | object       |
 
 ## Next Steps:
 
