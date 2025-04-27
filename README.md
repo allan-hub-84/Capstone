@@ -1,7 +1,7 @@
 ﻿# Capstone Project: Predict Home Price Index Based on Major Crime Incident in Toronto
  <b>Author:</b> Allan Salamanca
  
- <b>Date:</b> February 23, 2025
+## Capstone Sprint 1 Update - <b>Date:</b> February 23, 2025
 
 ## Overview:
 
@@ -45,10 +45,58 @@ Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse
 | MLS Neighbourhood Categories                   | Neighbourhood Name by MLS Data                    | object       |
 | MLS Municipality Code               | Municipality Code by Toronto Real Estate Board                               | object       |
 
-## Next Steps:
+## Next Steps - Sprint 2:
 
 - Address the null values in the HPI - Townhouse columns in the MLS data.  Utilize the K Nearest Neighbours approach to get approximate values.
 - Address the null values (NSA) in the NEIGHBOURHOOD_140 column in the Toronto Police data.  Since these areas are unknown, we can omit this from the total data set.
 - Create a joined data frame to link all the data sets together.
 - Conduct logistics regression to determine relationship and statistical significance.
 - Feature engineering to determine which levers we can use for our prediction.
+
+## Capstone Sprint 2 Update - <b>Date:</b> April 27, 2025
+
+## Data Frame Update:
+
+Merged the three data sets above and created one master data frame for our modelling.
+
+### "df_v5" 
+| Column                                 | Description                                         | Data Type   |
+|-----------------------------------------|-----------------------------------------------------|-------------|
+| Attribute_HPI - Apartment              | Apartment Categorical Flag             | float64     |
+| Attribute_HPI - Single-Family Attached | Semi-Detached Property Categorical Flag                     | float64     |
+| Attribute_HPI - Single-Family Detached | Detached Property Categorical Flag                             | float64     |
+| Attribute_HPI - Townhouse              | Townhouse Property   Categorical Flag                         | float64     |
+| Crime Count                            | Number of reported crimes in the area               | float64     |
+| Toronto Municipality_Toronto C01       | Dummy variable for Toronto C01                      | float64     |
+| Toronto Municipality_Toronto C02       | Dummy variable for Toronto C02                      | float64     |
+| ...                                    | ...                                                 | ...         |
+| Value                                  | Property Value          | float64     |
+| Year                                   | Year of observation                                 | float64     |
+
+## Scope Update
+
+### Target (Dependent Variable) = Value
+
+### Features (Indendent Variables) = Attribute, Toronto Municiaplity, Crime Count & Year.
+
+## Sprint 2 Observations
+
+Our current model struggles with high property values.  We notice this in values over $ 2 million.  Since we know that some of our independent variables have a higher influence on our dependent variable (Attribute & Municipality), we need to account for these in our advanced modelling.  Additionally, since property values have a wide range, we can consider scaling the data using a Log, using a percentage change in house price instead.  Logging “shrinks” the extreme values so the model focuses on the majority instead of the outliers.
+
+### Standard Scaler & Linear Regression Results
+- Train R² :  77.06%
+- Test  R² :  77.40%
+- Test RMSE: 246,819
+- Test  MAE: 166,915
+
+### OLS Results
+- R-Squared – 0.771
+- No p-value > 0.05
+
+
+## Next Steps - Sprint 3:
+- Log Housing Price Values
+- Compare and asses more advanced modelling, such as RandromForestRegressor, DecisionTreeRegressor or XGBoost.
+- Hyperparameter Tuning.
+
+
