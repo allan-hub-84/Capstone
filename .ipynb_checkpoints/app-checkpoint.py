@@ -61,12 +61,13 @@ if st.button("Predict Price"):
 
 import requests
 
+# Create a reference table for neighbourhoods.
 @st.cache_data
 def load_csv_from_github(url):
     raw_url = url.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/")
     return pd.read_csv(raw_url)
 
-# GitHub-hosted CSV link
+# CSV link.
 github_csv_url = "https://github.com/allan-hub-84/Capstone/blob/main/data/municipality_neighbourhoods.csv"
 
 try:
@@ -77,8 +78,11 @@ try:
         <h3 style='text-align: center;'>Municipality and Neighbourhood Reference Table</h3>
     """, unsafe_allow_html=True)
 
-    # Interactive dataframe
-    st.dataframe(df_reference)
+    # Set dynamic height based on the number of rows
+    row_height = 36  # pixels per row (adjust as needed)
+    table_height = row_height * len(df_reference)
+
+    st.dataframe(df_reference, height=table_height)
 
 except Exception as e:
     st.error("Unable to load the reference table from GitHub.")
