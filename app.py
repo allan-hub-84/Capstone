@@ -66,13 +66,15 @@ def load_csv_from_github(url):
     raw_url = url.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/")
     return pd.read_csv(raw_url)
 
-# GitHub-hosted CSV link
+# CSV link
 github_csv_url = "https://github.com/allan-hub-84/Capstone/blob/main/data/municipality_neighbourhoods.csv"
 
 try:
     df_reference = load_csv_from_github(github_csv_url)
 
-    st.markdown("### Municipality and Neighbourhood Reference Table")
+st.markdown("""
+    <h3 style='text-align: center;'>Municipality and Neighbourhood Reference Table</h3>
+""", unsafe_allow_html=True)
     st.dataframe(df_reference)
 except Exception as e:
     st.error("Unable to load the reference table from GitHub.")
