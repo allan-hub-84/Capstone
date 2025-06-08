@@ -4,7 +4,7 @@
 ## Table of Contents
 
 1. [App Demo](#app-demo)
-2. [Notebook & Presentation Files](#notebook-presentation-files)
+2. [Notebook & Presentation Files](#notebook-&-presentation-files)
 3. [Overview / Problem Statment / Objective](#scope-update)
 4. [Data Sets]
 5. [EDA]
