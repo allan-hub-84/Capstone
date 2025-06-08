@@ -4,7 +4,7 @@
 ## Table of Contents
 
 1. [App Demo](#app-demo)
-2. [Notebook Files]
+2. [Notebook & Presentation Files](#notebook-presentation-files)
 3. [Overview / Problem Statment / Objective](#scope-update)
 4. [Data Sets]
 5. [EDA]
@@ -17,8 +17,12 @@
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]
 ([https://capstone-z3gwvoh8gmh4eegnyh23k.streamlit.app](https://capstone-rv5xhecomeolprloxvqvac.streamlit.app/))
 
-## Notebook Files
+## Notebook & Presentation Files
 1. [EDA](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_EDA.ipynb)
+2. [Preprocessing](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_Preprocessing.ipynb)
+3. [Baseline Modelling](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_BaselineModelling.ipynb)
+4. [Advanced Modelling](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_AdvanceModelling.ipynb)
+5. [Capstone Presentation]
 
 ## Overview:
 
