@@ -5,13 +5,14 @@
 
 1. [App Demo](#app-demo)
 2. [Notebook & Presentation Files](#notebook-&-presentation-files)
-3. [Overview / Problem Statment / Objective](#scope-update)
-4. [Data Sets]
-5. [EDA]
-6. [Data Preprocessing]
-7. [Baseline Modelling]
-8. [Advanced Modelling]
-9. [Future State]
+3. [Overview](#overview)
+4. [Objective](#objective)
+5. [Data Sets](#data-sets:)
+6. [EDA]
+7. [Data Preprocessing]
+8. [Baseline Modelling]
+9. [Advanced Modelling]
+10. [Future State]
 
 ## App Demo
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]
@@ -31,7 +32,7 @@ Affordable housing has been a hot debate in Canada in the last 10 years.  Housin
 Purchasing a property is one of the most significant investments a person can make, and these investments are assets dependent upon investments for retirement or generating generational wealth.  Understanding what factors affect housing prices is crucial to maximizing equity and return on investment.  With this tool, we aim to predict the housing price impact by neighbourhood based on the estimated crime rate incidents.
 
 ## Objective:
-Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse, or Apartment) and neighbourhood based on major crime incident occurrences.
+Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse, or Apartment) and neighbourhood based on major crime incident occurrences, to determine which neighbourhoods have the best return on investment.
 
 ## Data Sets:
 
