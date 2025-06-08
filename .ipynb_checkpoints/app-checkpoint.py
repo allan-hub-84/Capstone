@@ -25,6 +25,16 @@ muni_codes = [
 ]
 muni_label_to_col = {code: f"Toronto Municipality_Toronto {code}" for code in muni_codes}
 
+image_path = Path("references/homepage.png")
+if image_path.exists():
+    st.image(image_path, use_column_width=True)
+else:
+    # Fallback to raw-GitHub URL if the local file isn't found
+    st.image(
+        "https://raw.githubusercontent.com/allan-hub-84/Capstone/main/references/homepage.png",
+        use_column_width=True,
+    )
+
 # --- 3. Streamlit UI ---------------------------------------------------------
 st.title("Toronto Housing Price Index Predictor based on Crime Rates")
 
