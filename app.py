@@ -5,7 +5,7 @@ import pickle
 
 # Load the model from the notebooks directory
 with open("notebooks/house_price_model.pkl", "rb") as file:
-    model = pickle.load(file)
+    loaded_model = pickle.load(file)
 
 # Title
 st.title("Toronto Housing Price Index Predictor based on Crime Rates")
@@ -34,11 +34,11 @@ if st.button("Predict Price"):
     }
 
     # Fill the rest of the required features with 0s
-    expected_features = model.feature_names_in_
+    expected_features = loaded_model.feature_names_in_
     input_data = pd.DataFrame([{feat: input_dict.get(feat, 0) for feat in expected_features}])
 
     # Predict and reverse log-transform
-    prediction_log = model.predict(input_data)[0]
+    prediction_log = loaded_model.predict(input_data)[0]
     prediction_dollar = np.exp(prediction_log)
 
     st.success(f"Predicted Price: ${prediction_dollar:,.0f}")
