@@ -1,5 +1,9 @@
 ﻿# Capstone Project: Predict Home Price Index Based on Major Crime Incident in Toronto
  <b>Author:</b> Allan Salamanca
+
+## App Demo
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]
+(https://capstone-z3gwvoh8gmh4eegnyh23k.streamlit.app)
  
 ## Capstone Sprint 1 Update - <b>Date:</b> February 23, 2025
 
