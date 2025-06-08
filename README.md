@@ -1,11 +1,22 @@
 ﻿# Capstone Project: Predict Home Price Index Based on Major Crime Incident in Toronto
  <b>Author:</b> Allan Salamanca
 
-## App Demo
+## Table of Contents
+
+1. [App Demo](#app-demo)
+2. [Notebook Files]
+3. [Overview / Problem Statment / Objective](#scope-update)
+4. [Data Sets]
+5. [EDA]
+6. [Data Preprocessing]
+7. [Baseline Modelling]
+8. [Advanced Modelling]
+9. [Future State]
+
+# App Demo
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]
 ([https://capstone-z3gwvoh8gmh4eegnyh23k.streamlit.app](https://capstone-rv5xhecomeolprloxvqvac.streamlit.app/))
- 
-## Capstone Sprint 1 Update - <b>Date:</b> February 23, 2025
+
 
 ## Overview:
 
@@ -77,7 +88,7 @@ Merged the three data sets above and created one master data frame for our model
 | Value                                  | Property Value          | float64     |
 | Year                                   | Year of observation                                 | float64     |
 
-## Scope Update
+# Scope Update
 
 ### Target (Dependent Variable) = Value
 
