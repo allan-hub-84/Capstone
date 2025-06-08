@@ -8,11 +8,11 @@
 3. [Overview](#overview)
 4. [Objective](#objective)
 5. [Data Sets](#data-sets)
-6. [EDA]
-7. [Data Preprocessing]
-8. [Baseline Modelling]
-9. [Advanced Modelling]
-10. [Future State]
+6. [EDA](#eda)
+7. [Data Preprocessing](#data-preprocessing)
+8. [Baseline Modelling](#baseline-modelling)
+9. [Advanced Modelling](#advanced-modeeling)
+10. [Future State](#future-state)
 
 ## App Demo
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]
@@ -32,7 +32,11 @@ Affordable housing has been a hot debate in Canada in the last 10 years.  Housin
 Purchasing a property is one of the most significant investments a person can make, and these investments are assets dependent upon investments for retirement or generating generational wealth.  Understanding what factors affect housing prices is crucial to maximizing equity and return on investment.  With this tool, we aim to predict the housing price impact by neighbourhood based on the estimated crime rate incidents.
 
 ## Objective:
-Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse, or Apartment) and neighbourhood based on major crime incident occurrences, to determine which neighbourhoods have the best return on investment.
+Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse, or Apartment) and neighbourhood based on major crime incident occurrences to determine which neighbourhoods have the best return on investment.
+
+### Target (Dependent Variable) = Value
+
+### Features (Indendent Variables) = Attribute, Toronto Municiaplity, Crime Count & Year.
 
 ## Data Sets:
 
@@ -67,7 +71,7 @@ Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse
 | MLS Neighbourhood Categories                   | Neighbourhood Name by MLS Data                    | object       |
 | MLS Municipality Code               | Municipality Code by Toronto Real Estate Board                               | object       |
 
-### Final Data Frame - "df_v5.csv"
+### 4) Final Data Frame - "df_v5.csv"
 
 Merged the three data sets above and created one master data frame for our modelling.
 
@@ -84,27 +88,11 @@ Merged the three data sets above and created one master data frame for our model
 | Value                                  | Property Value          | float64     |
 | Year                                   | Year of observation                                 | float64     |
 
-## Next Steps - Sprint 2:
+## EDA
 
-- Address the null values in the HPI - Townhouse columns in the MLS data.  Utilize the K Nearest Neighbours approach to get approximate values.
-- Address the null values (NSA) in the NEIGHBOURHOOD_140 column in the Toronto Police data.  Since these areas are unknown, we can omit this from the total data set.
-- Create a joined data frame to link all the data sets together.
-- Conduct logistics regression to determine relationship and statistical significance.
-- Feature engineering to determine which levers we can use for our prediction.
+## Data Preprocessing
 
-## Capstone Sprint 2 Update - <b>Date:</b> April 27, 2025
-
-
-
-## Scope Update
-
-### Target (Dependent Variable) = Value
-
-### Features (Indendent Variables) = Attribute, Toronto Municiaplity, Crime Count & Year.
-
-## Sprint 2 Observations
-
-Our current model struggles with high property values.  We notice this in values over $ 2 million.  Since we know that some of our independent variables have a higher influence on our dependent variable (Attribute & Municipality), we need to account for these in our advanced modelling.  Additionally, since property values have a wide range, we can consider scaling the data using a Log, using a percentage change in house price instead.  Logging “shrinks” the extreme values so the model focuses on the majority instead of the outliers.
+## Baseline Modelling
 
 ### Standard Scaler & Linear Regression Results
 - Train R² :  77.06%
@@ -117,9 +105,8 @@ Our current model struggles with high property values.  We notice this in values
 - No p-value > 0.05
 
 
-## Next Steps - Sprint 3:
-- Log Housing Price Values
-- Compare and asses more advanced modelling, such as RandromForestRegressor, DecisionTreeRegressor or XGBoost.
-- Hyperparameter Tuning.
+## Advanced Modelling
+
+## Future State
 
 
