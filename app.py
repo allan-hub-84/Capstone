@@ -32,8 +32,12 @@ st.title("Toronto Housing Price Index Predictor based on Crime Rates")
 
 attr_choice = st.selectbox("Attribute HPI", list(attr_label_to_col.keys()))
 muni_choice = st.selectbox("Toronto Municipality", muni_codes)
-year        = st.text_input("Year (e.g. 2020)")
-crime_count = st.text_input("Crime Count (whole number)")
+year = st.selectbox(
+    "Year",
+    options=list(range(2015, 2031)),   # 2031 is non-inclusive, so stops at 2030
+    index=5                            # pre-select 2020 (optional)
+)
+crime_count = st.number_input("Crime Count", min_value=0, step=100)
 
 if st.button("Predict Price"):
 
