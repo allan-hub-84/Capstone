@@ -28,6 +28,7 @@ muni_label_to_col = {code: f"Toronto Municipality_Toronto {code}" for code in mu
 st.image("references/homepage.png", use_column_width=True)
 
 # --- 3. Streamlit UI ---------------------------------------------------------
+st.markdown("<style>h1 {text-align:center;}</style>", unsafe_allow_html=True)
 st.title("Toronto Housing Price Index Predictor based on Crime Rates")
 
 attr_choice = st.selectbox("Attribute HPI", list(attr_label_to_col.keys()))
