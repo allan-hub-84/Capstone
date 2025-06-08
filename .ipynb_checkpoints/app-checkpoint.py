@@ -30,7 +30,7 @@ st.image("references/homepage.png", use_column_width=True)
 st.markdown("<style>h1 {text-align:center;}</style>", unsafe_allow_html=True)
 st.title("Toronto Housing Price Index Predictor based on Crime Rates")
 
-attr_choice = st.selectbox("Attribute HPI", list(attr_label_to_col.keys()))
+attr_choice = st.selectbox("Property Type", list(attr_label_to_col.keys()))
 muni_choice = st.selectbox("Toronto Municipality", muni_codes)
 year = st.selectbox(
     "Year",
