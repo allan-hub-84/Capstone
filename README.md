@@ -67,21 +67,10 @@ Predict home price index (HPI) by house type (Detached, Semi-Detached, Townhouse
 | MLS Neighbourhood Categories                   | Neighbourhood Name by MLS Data                    | object       |
 | MLS Municipality Code               | Municipality Code by Toronto Real Estate Board                               | object       |
 
-## Next Steps - Sprint 2:
-
-- Address the null values in the HPI - Townhouse columns in the MLS data.  Utilize the K Nearest Neighbours approach to get approximate values.
-- Address the null values (NSA) in the NEIGHBOURHOOD_140 column in the Toronto Police data.  Since these areas are unknown, we can omit this from the total data set.
-- Create a joined data frame to link all the data sets together.
-- Conduct logistics regression to determine relationship and statistical significance.
-- Feature engineering to determine which levers we can use for our prediction.
-
-## Capstone Sprint 2 Update - <b>Date:</b> April 27, 2025
-
-## Data Frame Update:
+### Final Data Frame - "df_v5.csv"
 
 Merged the three data sets above and created one master data frame for our modelling.
 
-### "df_v5" 
 | Column                                 | Description                                         | Data Type   |
 |-----------------------------------------|-----------------------------------------------------|-------------|
 | Attribute_HPI - Apartment              | Apartment Categorical Flag             | float64     |
@@ -94,6 +83,18 @@ Merged the three data sets above and created one master data frame for our model
 | ...                                    | ...                                                 | ...         |
 | Value                                  | Property Value          | float64     |
 | Year                                   | Year of observation                                 | float64     |
+
+## Next Steps - Sprint 2:
+
+- Address the null values in the HPI - Townhouse columns in the MLS data.  Utilize the K Nearest Neighbours approach to get approximate values.
+- Address the null values (NSA) in the NEIGHBOURHOOD_140 column in the Toronto Police data.  Since these areas are unknown, we can omit this from the total data set.
+- Create a joined data frame to link all the data sets together.
+- Conduct logistics regression to determine relationship and statistical significance.
+- Feature engineering to determine which levers we can use for our prediction.
+
+## Capstone Sprint 2 Update - <b>Date:</b> April 27, 2025
+
+
 
 ## Scope Update
 
