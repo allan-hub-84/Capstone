@@ -34,8 +34,8 @@ attr_choice = st.selectbox("Property Type", list(attr_label_to_col.keys()))
 muni_choice = st.selectbox("Toronto Municipality", muni_codes)
 year = st.selectbox(
     "Year",
-    options=list(range(2015, 2031)),   # 2031 is non-inclusive, so stops at 2030
-    index=5                            # pre-select 2020 (optional)
+    options=list(range(2015, 2024)),
+    index=5                           
 )
 crime_count = st.number_input("Crime Count", min_value=0, step=250)
 
