@@ -26,15 +26,14 @@ muni_codes = [
 muni_label_to_col = {code: f"Toronto Municipality_Toronto {code}" for code in muni_codes}
 
 st.image("references/homepage.png", use_column_width=True)
-
 # --- 3. Streamlit UI ---------------------------------------------------------
 st.markdown("<style>h1 {text-align:center;}</style>", unsafe_allow_html=True)
 st.title("Toronto Housing Price Index Predictor based on Crime Rates")
 
 attr_choice = st.selectbox("Attribute HPI", list(attr_label_to_col.keys()))
 muni_choice = st.selectbox("Toronto Municipality", muni_codes)
-year        = st.number_input("Year",  min_value=2015, max_value=2030, step=1, format="%d")
-crime_count = st.number_input("Crime Count", min_value=0, step=1)
+year        = st.text_input("Year (e.g. 2020)")
+crime_count = st.text_input("Crime Count (whole number)")
 
 if st.button("Predict Price"):
 
