@@ -13,10 +13,12 @@
 8. [Advanced Modelling]
 9. [Future State]
 
-# App Demo
+## App Demo
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]
 ([https://capstone-z3gwvoh8gmh4eegnyh23k.streamlit.app](https://capstone-rv5xhecomeolprloxvqvac.streamlit.app/))
 
+## Notebook Files
+1. [EDA](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_EDA.ipynb)
 
 ## Overview:
 
@@ -88,7 +90,7 @@ Merged the three data sets above and created one master data frame for our model
 | Value                                  | Property Value          | float64     |
 | Year                                   | Year of observation                                 | float64     |
 
-# Scope Update
+## Scope Update
 
 ### Target (Dependent Variable) = Value
 
