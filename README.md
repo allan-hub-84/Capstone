@@ -7,7 +7,7 @@
 2. [Notebook & Presentation Files](#notebook-&-presentation-files)
 3. [Overview](#overview)
 4. [Objective](#objective)
-5. [Data Sets](#data-sets:)
+5. [Data Sets](#data-sets)
 6. [EDA]
 7. [Data Preprocessing]
 8. [Baseline Modelling]
