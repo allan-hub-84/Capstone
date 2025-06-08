@@ -1,29 +1,30 @@
 ﻿# Capstone Project: Predict Home Price Index Based on Major Crime Incident in Toronto
- <b>Author:</b> Allan Salamanca
+### Author: Allan Salamanca
+### Date: June 09, 2025
 
 ## Table of Contents
 
 1. [App Demo](#app-demo)
-2. [Notebook & Presentation Files](#notebook-&-presentation-files)
+2. [Notebook and Presentation Files](#notebook-and-presentation-files)
 3. [Overview](#overview)
 4. [Objective](#objective)
 5. [Data Sets](#data-sets)
 6. [EDA](#eda)
 7. [Data Preprocessing](#data-preprocessing)
-8. [Baseline Modelling](#baseline-modelling)
-9. [Advanced Modelling](#advanced-modeeling)
+8. [Baseline Modelling](#baseline-modelling-linear-regression)
+9. [Advanced Modelling](#advanced-modelling)
 10. [Future State](#future-state)
 
 ## App Demo
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]
 ([https://capstone-z3gwvoh8gmh4eegnyh23k.streamlit.app](https://capstone-rv5xhecomeolprloxvqvac.streamlit.app/))
 
-## Notebook & Presentation Files
+## Notebook and Presentation Files
 1. [EDA](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_EDA.ipynb)
 2. [Preprocessing](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_Preprocessing.ipynb)
 3. [Baseline Modelling](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_BaselineModelling.ipynb)
 4. [Advanced Modelling](https://github.com/allan-hub-84/Capstone/blob/main/notebooks/AllanSalamanca_Capstone_AdvanceModelling.ipynb)
-5. [Capstone Presentation]
+5. [Capstone Presentation](https://github.com/allan-hub-84/Capstone/blob/main/docs/AllanSalamanca_Capstone.pdf)
 
 ## Overview:
 
@@ -90,23 +91,110 @@ Merged the three data sets above and created one master data frame for our model
 
 ## EDA
 
+It is evident that there are varying property value increases by neighbourhood, both in terms of absolute value and percentage.  Certain areas yield a higher return, and we can use this information to check if major crime incidents in specific neighbourhoods can influence property values.
+
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/hpiyoy.png?raw=true" alt="Homepage" width="800"/>
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/hpiyoyavgincrease.png?raw=true" alt="Homepage" width="800"/>
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/muniyoyavgincrease.png?raw=true" alt="Homepage" width="800"/>
+</p>
+
+According to police data, crime rates have increased annually, but specific neighbourhoods and crime types are more prevalent than others.  We can use this information to analyze whether crimes, categorized by neighbourhood, influence property values within the same neighbourhood.  If there is a significant relationship, this can help predict property values by neighbourhood based on crime incidents.
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/crimeyoy.png?raw=true" alt="Homepage" width="800"/>
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/crimebymuni.png?raw=true" alt="Homepage" width="800"/>
+</p>
+
 ## Data Preprocessing
 
-## Baseline Modelling
+To link the two data sets (in our EDA), we need to create a join table that matches the Toronto Municipality column in the MLS data to the NEIGHBOURHOOD_140 column in the Toronto Police data.  After doing online research, I found the neighbourhood maps on the Toronto Real Estate Board website (https://app.trreb.ca/trrebdata/common/maps/Toronto.pdf).
+
+After merging the data, I created dummy variables for categories of property type and neighbourhood.  Additionally, to address the missing values in the data set, I utilized K-nearest neighbours to impute the missing data.  The final version of our data frame is here: https://github.com/allan-hub-84/Capstone/blob/main/data/df_v5.csv
+
+After we merge the data, we can review the correlation matrix.  We can see in the matrix that most values are below 0.5, except for one.  The Toronto Municipality (C01) shows a 0.65 correlation with crime counts; however, the correlation with property values is -0.05.  This makes sense since it's a highly dense area downtown, primarily consisting of apartments.  For now, I am keeping it in my model.  Additionally, I will drop the month column and use the Year, as it has a stronger correlation with property values.
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/correlationmatrix.png?raw=true" alt="Homepage" width="800"/>
+</p>
+
+## Baseline Modelling Linear Regression
+
+In general, we have a good R-squared value at 0.77%, which explains most of our variance.  Another thing we notice is that there are no p-values > 0.05.  We can continue working on this model.
 
 ### Standard Scaler & Linear Regression Results
 - Train R² :  77.06%
 - Test  R² :  77.40%
-- Test RMSE: 246,819
-- Test  MAE: 166,915
+- Test RMSE: $246,819
+- Test  MAE: $166,915
 
 ### OLS Results
 - R-Squared – 0.771
 - No p-value > 0.05
 
+We notice that even though the residuals are normally distributed, it is screwed (positive) at the right tail.  We also observe in our Q plot that our model underestimates the value of high-value homes.
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/baselineres.png?raw=true" alt="Homepage" width="800"/>
+</p>
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/baselineq.png?raw=true" alt="Homepage" width="800"/>
+</p>
+Here, we can see that our model exhibits heteroscedasticity, indicating it is not consistent across the dataset.  We see that variances are increasing the value of housing prices increases.  This confirms our residual and Q-plot results.
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/baselinehet.png?raw=true" alt="Homepage" width="800"/>
+</p>
+Our model from Scikit-learn, even when scaled, yields results that are very similar to those of our initial linear regression model.  It confirms that our model doesn't perform well in predicting high-value properties, and it generally underestimates them.
+While our accuracy score is 77%, we notice a significant range in our RMSE and MAE scores.  To make our model more accurate, we need to understand the outliers that impact the RMSE and MAE. 
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/baselineactpre.png?raw=true" alt="Homepage" width="800"/>
+</p>
+
 
 ## Advanced Modelling
 
+Our baseline model struggles with high property values.  We notice this in values over $ 2 million.  Since we know that some of our independent variables have a higher influence on our dependent variable (Attribute & Municipality), we need to account for these in our advanced modelling.  Additionally, since property values have a wide range, we can consider scaling the data using a Log, using a percentage change in house price instead.  Logging “shrinks” the extreme values, allowing the model to focus on the majority instead of the outliers.
+
+By simply log-transforming the data, we can already see much smoother linear regression results.
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/logbaselineactpre.png?raw=true" alt="Homepage" width="800"/>
+</p>
+
+After log-transforming the data set, we utilized GridSearchCV to determine the best model among Decision Tree Regressor, Random Forest Regressor, and Extreme Gradient Boosting.  After adjusting and testing multiple parameters, the best model recommended is Extreme Gradient Boosting, with the suggested parameters being a 0.2 learning rate, a maximum depth of 8, and 300 n_estimators.
+
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/learningrate.png?raw=true" alt="Homepage" width="800"/>
+</p>
+
+We can see that the XGBoost Regressor predicts housing prices with very high accuracy. After applying a log transformation and using GridSearch, it achieved an R² of 98.84%, meaning it explains nearly all the variation in prices. Now, the average error went from 246K to 61K, increasing the confidence level in the model. The results demonstrate a strong correlation between predicted and actual prices, enhancing the reliability of the tool.
+
+### Extreme Gradient Boosting Results
+- Test  R² :  98.84%
+- Test RMSE: $61,482
+- Test  MAE: $37,070
+</p>
+<p align="left">
+  <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/advancedactpre.png?raw=true" alt="Homepage" width="800"/>
+</p>
+
 ## Future State
 
+There are many other data sets we can utilize to enhance this model.  Currently, we are utilizing high-level numbers based on property type, neighbourhood, total crime and year.
+
+The following data sets can be incorporated in the future to enhance the granularity of our analysis and predictions.
+
+- Population Density
+- Postal Code
+- Crime Type
+- Neighbourhood Ratings: School, Hospitals, Community Centers, Police Station, Fire Station, Etc.
+- Development
+- Number of Open Listings
 
