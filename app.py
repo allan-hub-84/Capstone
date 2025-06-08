@@ -3,21 +3,19 @@ import pandas as pd
 import numpy as np
 import pickle
 
-# --- 1. Load model -----------------------------------------------------------
+# Load the model from our pickle file.
 with open("notebooks/house_price_model.pkl", "rb") as file:
     model = pickle.load(file)
 
 feature_names = model.feature_names_in_
 
-# --- 2. Mapping dictionaries -------------------------------------------------
+# Map the column labels to our data frame.
 attr_label_to_col = {
     "Apartment":        "Attribute_HPI - Apartment",
     "Detached":         "Attribute_HPI - Single-Family Detached",
     "Townhouse":        "Attribute_HPI - Townhouse",
     "Semi-Detached":    "Attribute_HPI - Single-Family Attached",
 }
-
-# every code just needs "Toronto " in front of it
 muni_codes = [
     'C01','C02','C03','C04','C06','C07','C08','C09','C10','C11','C12','C13','C14','C15',
     'E01','E02','E03','E04','E05','E06','E07','E08','E09','E10','E11',
@@ -25,11 +23,13 @@ muni_codes = [
 ]
 muni_label_to_col = {code: f"Toronto Municipality_Toronto {code}" for code in muni_codes}
 
+# Set image and title of page.
 st.image("references/homepage.png", use_column_width=True)
 # --- 3. Streamlit UI ---------------------------------------------------------
 st.markdown("<style>h1 {text-align:center;}</style>", unsafe_allow_html=True)
 st.title("Toronto Housing Price Index Predictor based on Crime Rates")
 
+# Set drop downs and inputs.
 attr_choice = st.selectbox("Property Type", list(attr_label_to_col.keys()))
 muni_choice = st.selectbox("Toronto Municipality", muni_codes)
 year = st.selectbox(
@@ -37,8 +37,9 @@ year = st.selectbox(
     options=list(range(2015, 2031)),   # 2031 is non-inclusive, so stops at 2030
     index=5                            # pre-select 2020 (optional)
 )
-crime_count = st.number_input("Crime Count", min_value=0, step=100)
+crime_count = st.number_input("Crime Count", min_value=0, step=250)
 
+# Set function for button.
 if st.button("Predict Price"):
 
     # start with a single-row DF full of zeros
