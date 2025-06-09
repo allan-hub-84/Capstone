@@ -174,7 +174,7 @@ After log-transforming the data set, we utilized GridSearchCV to determine the b
   <img src="https://github.com/allan-hub-84/Capstone/blob/main/references/learningrate.png?raw=true" alt="Homepage" width="800"/>
 </p>
 
-We can see that the XGBoost Regressor predicts housing prices with very high accuracy. After applying a log transformation and using GridSearch, it achieved an R² of 98.84%, meaning it explains nearly all the variation in prices. Now, the average error went from 246K to 61K, increasing the confidence level in the model. The results demonstrate a strong correlation between predicted and actual prices, enhancing the reliability of the tool.
+We can see that the XGBoost Regressor predicts housing prices with very high accuracy. After applying a log transformation and using GridSearch, it achieved an R² of 98.84%, meaning it explains nearly all the variation in prices. Now, the average error went from $167K to $37K, increasing the confidence level in the model. The results demonstrate a strong correlation between predicted and actual prices, enhancing the reliability of the tool.
 
 ### Extreme Gradient Boosting Results
 - Test  R² :  98.84%
